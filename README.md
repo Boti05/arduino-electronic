@@ -1,0 +1,1 @@
+![Traffic light diagramm](/traffic_light/circuit.png)
