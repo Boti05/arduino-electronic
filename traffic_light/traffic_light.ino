@@ -38,7 +38,7 @@ Group_tick groups[13] = {
 void traffic_l_handle(int tick) {
   for(Group_tick group : groups) {
     if(group.tick == tick) {
-      for(Bl_rules rule :  group.rules) {
+      for(Bl_rules rule : group.rules) {
         digitalWrite(rule.pin, rule.volt);
       }
     }
