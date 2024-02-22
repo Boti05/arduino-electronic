@@ -11,6 +11,7 @@ int led9 = 52;
 int led_correct = 12;
 int led_incorrect = 13;
 int Led_Array[] = {led1, led2, led3, led4, led5, led6, led7, led8, led9, led_correct, led_incorrect};
+
 //set buttons
 int button1 = 21;
 int button2 = 20;
@@ -22,6 +23,7 @@ int button7 = 5;
 int button8 = 3;
 int button9 = 2;
 int Button_Array[] = {button1, button2, button3, button4, button5, button6, button7, button8, button9};
+
 //set the useful variables
 bool pressed = false;
 bool not_pressed = true;
@@ -42,6 +44,9 @@ int startin_process() {
   for (byte i = 0; i < 11; i++) {
     if (digitalRead(Button_Array[i]) == pressed) {
       return start = 1;
+    }
+    else {
+      return start;
     }
   }
 }
@@ -66,7 +71,8 @@ void before_start(int start) {
       delay(50);
     }
   }
-  // do while ha az érték 1, a végén 2 lesz hogy csak egyszer fusson le és a másik ne fusson
+  // do while the "start" = 1, at the end I set it to 2 for doing this cycle only for once but not to trigger the other
+  if (start == 1) {
     digitalWrite(Led_Array[-1], LOW);
     digitalWrite(Led_Array[-2], LOW);
     for (byte k = 0; k = 3; k++) {
@@ -78,12 +84,14 @@ void before_start(int start) {
         digitalWrite(Led_Array[b], HIGH);
       }
     }
+    start = 2;
+  }
 }
 
 void tick() {
   int tick_count = 0;
   for (int i = 1; i == 2; i++) {
-    
+    //there will be the ticking
   }
 }
 
@@ -97,13 +105,12 @@ void setup() {
   for (byte i = 0; i < 12; i ++) {
     pinMode(Led_Array[i], OUTPUT);
   }
+
   //make the arduino be abel to print to the serial monitor
   Serial.begin(9600);
 }
 
 void loop() {
-
-
   before_start(startin_process());
 
   for (byte i = 0; i < 11; i++) {
